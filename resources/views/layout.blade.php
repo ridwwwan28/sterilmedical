@@ -113,41 +113,63 @@
     </section>
 
     <!-- Visi Misi Section -->
-    <section id="vision" class="relative h-screen w full flex bg-blue-50">
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-50 pt-40">
-            <div class="flex bg-green-100">
-                <div>
-                    <img src="{{ asset('img/vision-mission/vision.jpg') }}" alt="Steril Medical Indonesia Vision"
-                        class="w-32 lg:w-80 rounded-xl">
+    <section id="vision" class="relative min-h-screen w-full flex bg-blue-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16 mt-10 lg:gap-12">
+
+            <div class="flex flex-col lg:flex-row items-center w-full">
+                <div class="w-full lg:w-5/12 z-10">
+                    <img src="{{ asset('img/vision-mission/vision.jpg') }}" alt="Steril Medical Vision"
+                        class="w-full h-auto object-cover rounded-2xl shadow-lg aspect-video lg:aspect-4/3">
                 </div>
 
-                <div class="bg-sky-800 text-end text-white px-5 py-10 rounded-xl">
-                    <h2 class="text-6xl uppercase font-semibold pb-6">
-                        Brand Vision
-                    </h2>
-                    <p class="text-2xl">
-                        Menciptakan dunia yang lebih sehat dengan pengalaman perawatan kesehatan yang cerdas.
-                    </p>
+                <div
+                    class="w-full lg:w-8/12 bg-[#7b8baf] text-white rounded-3xl p-8 lg:p-6 lg:-ml-16 z-0 mt-6 lg:mt-0 shadow-md">
+                    <div class="lg:pl-16 text-center lg:text-right">
+                        <div class="flex justify-end">
+                            <img src="{{ asset('img/vision-mission/smi-negative.png') }}"
+                                alt="Steril Medical Indonesia Vision" class="w-60">
+                        </div>
+                        <h2
+                            class="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-wider uppercase mb-4 leading-snug">
+                            Brand Vision
+                        </h2>
+                        <p class="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-gray-100">
+                            Menciptakan dunia yang lebih sehat dengan pengalaman perawatan kesehatan yang cerdas
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex bg-green-50">
-                <div class="bg-sky-800 text-start text-white px-5 py-10 rounded-xl">
-                    <h2 class="text-6xl uppercase font-semibold pb-6">
-                        Brand Mission
-                    </h2>
-                    <p class="text-2xl">
-                        Meningkatkan kesehatan manusia dengan menyediakan produk medis sekali pakai yang unggul untuk
-                        mendukung penyedia layanan kesehatan
-                    </p>
+            <div class="flex flex-col-reverse lg:flex-row items-center w-full mt-8 lg:mt-0">
+                <div
+                    class="w-full lg:w-8/12 bg-[#7b8baf] text-white rounded-3xl p-8 lg:p-6 lg:-mr-16 z-0 mb-6 lg:mb-0 shadow-md">
+                    <div class="lg:pr-16 text-center lg:text-left">
+                        <div class="flex justify-start">
+                            <img src="{{ asset('img/vision-mission/smi-negative.png') }}"
+                                alt="Steril Medical Indonesia Vision" class="w-60">
+                        </div>
+                        <h2
+                            class="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-wider uppercase mb-4 leading-snug">
+                            Brand Mission
+                        </h2>
+                        <p class="text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-gray-100">
+                            Meningkatkan kesehatan manusia dengan menyediakan produk medis sekali pakai yang unggul
+                            untuk mendukung penyedia layanan kesehatan
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <img src="{{ asset('img/vision-mission/mision.jpg') }}" alt="Steril Medical Indonesia Vision"
-                        class="w-32 lg:w-80 rounded-xl">
+
+                <div class="w-full lg:w-5/12 z-10">
+                    <img src="{{ asset('img/vision-mission/mision.jpg') }}" alt="Steril Medical Mission"
+                        class="w-full h-auto object-cover rounded-2xl shadow-lg aspect-video lg:aspect-4/3 bg-white">
                 </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div></div>
+    </footer>
 </body>
 
 
