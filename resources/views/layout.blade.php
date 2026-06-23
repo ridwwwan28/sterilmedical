@@ -37,9 +37,9 @@
                     <a href="/brand-story"
                         class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950">Brand
                         Story</a>
-                    <a href="/"
+                    <a href="/products"
                         class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950">Products</a>
-                    <a href="/"
+                    <a href="#"
                         class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950">Quality</a>
                     <a href="/contact-us"
                         class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950">Contact
@@ -64,9 +64,9 @@
                 <a href="/brand-story"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Brand
                     Story</a>
-                <a href="/"
+                <a href="/products"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Products</a>
-                <a href="/"
+                <a href="#"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Quality</a>
                 <a href="/contact-us"
                     class="font-semibold bg-blue-500 rounded-xl text-center py-2 text-white mt-5 hover:bg-blue-700">Hubungi

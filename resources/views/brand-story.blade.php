@@ -4,6 +4,14 @@
     <section id="vision-mission" class="relative min-h-screen w-full flex bg-blue-50">
         <div class="max-w-6xl mx-auto px-4 flex flex-col gap-16 mt-30 lg:gap-12">
 
+            <div class="w-full p-10 mb-2 lg:mb-4">
+                <h3 class="text-4xl font-bold text-center text-blue-950 mb-2">Lorem ipsum dolor sit amet.</h3>
+                <p class="text-normal text-center text-blue-950 mx-auto max-w-4xl">Lorem ipsum dolor sit amet consectetur,
+                    adipisicing elit.
+                    Cum ut, fuga aliquid optio voluptate iste
+                    aliquam? Explicabo dolorem modi placeat!</p>
+            </div>
+
             <div class="flex flex-col lg:flex-row items-center w-full">
                 <div class="w-full lg:w-4/12 z-10">
                     <img src="{{ asset('img/vision-mission/vision.jpg') }}" alt="Steril Medical Vision"
@@ -54,7 +62,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="mb-10 text-center">
-                <h2 class="text-4xl lg:text-5xl  font-extrabold text-blue-900 mb-4 tracking-wide">
+                <h2 class="text-4xl lg:text-5xl  font-bold text-blue-900 mb-4 tracking-wide">
                     Awal Perjalanan Brand Steril Medical
                 </h2>
                 <p class="text-gray-800 font-bold text-sm md:text-base tracking-wide">
@@ -64,12 +72,7 @@
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
 
-                <div class="hidden lg:flex w-full lg:w-5/12 lg:sticky lg:top-24 z-10">
-                    <img src="{{ asset('img/nurse-journey.png') }}" alt="Our Journey"
-                        class="w-full max-w-md mx-auto lg:mx-0 object-contain">
-                </div>
-
-                <div class="w-full lg:w-7/12">
+                <div class="w-full">
 
                     <div class="mt-8 flex flex-col">
 
@@ -156,10 +159,10 @@
 
             <div class="flex flex-col md:flex-row items-center justify-center mb-16">
                 <div class="w-full md:w-1/2 text-center">
-                    <h2 class="text-5xl font-extrabold text-blue-900 mb-4">
+                    <h2 class="text-5xl font-bold text-blue-900 mb-4">
                         Awal Perjalanan Brand Steril Medical
                     </h2>
-                    <p class="text-gray-800 font-semibold text-sm md:text-base tracking-wide">
+                    <p class="text-gray-800 font-semibold text-sm md:text-base">
                         Kami memulai perjalanan ini dengan penuh keyakinan
                     </p>
                 </div>

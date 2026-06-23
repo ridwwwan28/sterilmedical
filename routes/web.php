@@ -10,6 +10,14 @@ Route::get('/brand-story', function () {
     return view('brand-story');
 });
 
+Route::get('/products', function () {
+    return view('products');
+});
+
+Route::get('/quality', function () {
+    return view('quality');
+});
+
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
