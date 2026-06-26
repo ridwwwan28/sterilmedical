@@ -1,16 +1,24 @@
 @extends('layout')
 @section('konten')
-    <section class="relative w-full bg-blue-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-35">
-            <div class="w-full mb-10 lg:mb-16">
-                <h3 class="text-4xl font-bold text-center text-blue-950 mb-2">Lorem ipsum dolor sit amet.</h3>
+    <section class="relative bg-linear-to-b from-sky-50 via-white to-blue-50/30 overflow-hidden">
+        <!-- Background decorative blobs -->
+        <div class="absolute top-0 right-0 -mt-24 -mr-24 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 rounded-full bg-sky-100/50 blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 pt-2 sm:px-6 mt-15 lg:mt-23 lg:px-8 transform-gpu">
+            <div class="w-full p-10 mb-2 lg:mb-4">
+                <h3 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">Lorem
+                    ipsum dolor sit amet.</h3>
                 <p class="text-normal text-center text-blue-950 mx-auto max-w-4xl">Lorem ipsum dolor sit amet consectetur,
                     adipisicing elit.
                     Cum ut, fuga aliquid optio voluptate iste
                     aliquam? Explicabo dolorem modi placeat!</p>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 w-full items-center lg:items-start">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 w-full mb-20 items-center lg:items-start">
                 <div class="w-full px-2">
                     <h3 class="text-2xl font-semibold uppercase text-center mb-5 text-blue-950">Kantor Pusat</h3>
                     <div class="flex gap-2 text-blue-950 mb-4">
