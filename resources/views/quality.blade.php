@@ -157,45 +157,26 @@
 
             <div class="relative w-full overflow-hidden bg-transparent py-4">
 
-                <div id="marqueeInner" class="flex items-center gap-20 w-max will-change-transform">
-
-                    <div id="group1" class="flex items-center gap-20 shrink-0">
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
+                <div id="marqueeInner" class="flex items-center w-max will-change-transform">
+                    <div id="group1" class="flex items-center gap-30 shrink-0">
+                        <div class="w-32 md:w-50 flex justify-center items-center"><img
                                 src="{{ asset('img/quality/Akurat.png') }}" alt="Akurat"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
+                                class="h-30 object-contain transition-all"></div>
+                        <div class="w-32 md:w-50 flex justify-center items-center"><img
                                 src="{{ asset('img/quality/Arjoena.png') }}" alt="Parkway"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
+                                class="h-30 object-contain transition-all"></div>
+                        <div class="w-32 md:w-50 flex justify-center items-center"><img
                                 src="{{ asset('img/quality/Logo-01.png') }}" alt="Alexandra"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
+                                class="h-30 object-contain transition-all"></div>
+                        <div class="w-32 md:w-50 flex justify-center items-center"><img
                                 src="{{ asset('img/quality/Logo-02.png') }}" alt="A*STAR"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
+                                class="h-30 object-contain transition-all"></div>
+                        <div class="w-32 md:w-50 flex justify-center items-center"><img
                                 src="{{ asset('img/quality/logo-Onestep2.png') }}" alt="KK Hospital"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
+                                class="h-30 object-contain transition-all"></div>
                     </div>
-
-                    <div class="flex items-center gap-20 shrink-0" aria-hidden="true">
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
-                                src="{{ asset('img/quality/Akurat.png') }}" alt="SingHealth"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
-                                src="{{ asset('img/quality/Arjoena.png') }}" alt="Parkway"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
-                                src="{{ asset('img/quality/Logo-01.png') }}" alt="Alexandra"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
-                                src="{{ asset('img/quality/Logo-02.png') }}" alt="A*STAR"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                        <div class="w-32 md:w-40 flex justify-center items-center"><img
-                                src="{{ asset('img/quality/logo-Onestep2.png') }}" alt="KK Hospital"
-                                class="h-30 object-contain grayscale hover:grayscale-0 transition-all"></div>
-                    </div>
-
                 </div>
+
             </div>
         </div>
     </section>

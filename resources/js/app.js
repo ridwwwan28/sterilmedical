@@ -112,39 +112,53 @@ document.addEventListener("DOMContentLoaded", function () {
     const group1 = document.getElementById("group1");
 
     if (marqueeInner && group1) {
+        // Trik Kloning: Menggandakan elemen secara otomatis melalui JS
+        // Kita kloning 3 kali agar sangat panjang dan aman untuk layar monitor Ultra-Wide
+        const clone1 = group1.cloneNode(true);
+        const clone2 = group1.cloneNode(true);
+        const clone3 = group1.cloneNode(true);
+
+        // Hapus ID pada hasil kloning agar HTML tetap valid (ID tidak boleh ganda)
+        clone1.removeAttribute("id");
+        clone2.removeAttribute("id");
+        clone3.removeAttribute("id");
+
+        // Masukkan hasil kloning ke dalam container di sebelah Grup 1
+        marqueeInner.appendChild(clone1);
+        marqueeInner.appendChild(clone2);
+        marqueeInner.appendChild(clone3);
+
         let currentX = 0;
         let isPaused = false;
 
-        // Atur Kecepatan Pergeseran (Semakin besar angkanya, semakin cepat jalannya)
-        // Nilai 0.75 - 1.0 biasanya sangat ideal dan pas di mata
+        // Atur Kecepatan Pergeseran (Bisa disesuaikan, 0.8 adalah standar halus)
         const speed = 0.8;
 
         function animate() {
             if (!isPaused) {
-                // Kurangi posisi X secara konstan agar bergeser ke kiri
                 currentX -= speed;
 
-                // Ambil lebar pasti dari 1 grup logo (termasuk gap-nya jika ada)
-                const groupWidth = group1.offsetWidth + 80; // 80px berasal dari gap-20 Tailwind
+                // Ambil lebar pasti dari 1 grup logo (ditambah gap-20 yaitu 80px)
+                const groupWidth = group1.offsetWidth + 80;
 
-                // Jika Grup 1 sudah bergeser keluar layar seutuhnya, reset posisi ke 0 tanpa jeda
+                // Reset posisi ke 0 tanpa jeda jika grup 1 sudah tergeser penuh
                 if (Math.abs(currentX) >= groupWidth) {
                     currentX = 0;
                 }
 
-                // Eksekusi pergeseran menggunakan translate3d agar dibantu hardware GPU
+                // Eksekusi pergeseran menggunakan hardware GPU
                 marqueeInner.style.transform = `translate3d(${currentX}px, 0, 0)`;
             }
 
-            // Panggil fungsi secara rekursif mengikuti sistem refresh rate browser
+            // Loop tanpa henti mengikuti refresh rate monitor
             requestAnimationFrame(animate);
         }
 
-        // Fitur Pause saat mouse diarahkan ke area logo (hover)
+        // Fitur Pause saat kursor mouse menyorot logo
         marqueeInner.addEventListener("mouseenter", () => (isPaused = true));
         marqueeInner.addEventListener("mouseleave", () => (isPaused = false));
 
-        // Jalankan animasi pertama kali
+        // Jalankan animasi
         requestAnimationFrame(animate);
     }
 });

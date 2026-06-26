@@ -177,7 +177,7 @@
                 <div class="relative w-full group">
 
                     <button id="slideLeft"
-                        class="absolute left-0 lg:-left-6 top-[26px] -translate-y-1/2 z-20 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 hover:scale-110 transition-all focus:outline-none">
+                        class="absolute left-0 lg:-left-6 top-6.5 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 hover:scale-110 transition-all focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="text-blue-900">
@@ -275,7 +275,7 @@
                     </div>
 
                     <button id="slideRight"
-                        class="absolute right-0 lg:-right-6 top-[26px] -translate-y-1/2 z-20 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 hover:scale-110 transition-all focus:outline-none">
+                        class="absolute right-0 lg:-right-6 top-6.5 -translate-y-1/2 z-20 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 hover:scale-110 transition-all focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="text-blue-900">

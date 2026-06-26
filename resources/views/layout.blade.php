@@ -52,14 +52,14 @@
         <div id="mobileMenu" class="hidden lg:hidden">
             <div
                 class="absolute flex flex-col bg-white shadow-md inset-x-0 mx-auto px-6 py-5 top-15 border-t border-gray-100">
-                <a href="/brand-story"
+                <a href="/cerita-merk"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Brand
                     Story</a>
-                <a href="/products"
+                <a href="/produk"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Produk</a>
-                <a href="/quality"
+                <a href="/kualitas"
                     class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Kualitas</a>
-                <a href="/contact-us"
+                <a href="/hubungi-kami"
                     class="font-semibold bg-blue-500 rounded-xl text-center py-2 text-white mt-5 hover:bg-blue-700">Hubungi
                     Kami</a>
             </div>
