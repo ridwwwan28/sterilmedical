@@ -25,14 +25,14 @@
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex w-full px-40 items-center justify-end lg:space-x-10 text-lg">
                     <a href="/cerita-merk"
-                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950 whitespace-nowrap">Cerita
+                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 whitespace-nowrap {{ request()->is('cerita-merk*') ? 'border-b-blue-950' : 'border-transparent hover:border-b-blue-950' }}">Cerita
                         Merk</a>
                     <a href="/produk"
-                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950 whitespace-nowrap">Produk</a>
+                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 whitespace-nowrap {{ request()->is('produk*') ? 'border-b-blue-950' : 'border-transparent hover:border-b-blue-950' }}">Produk</a>
                     <a href="/kualitas"
-                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950 whitespace-nowrap">Kualitas</a>
+                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 whitespace-nowrap {{ request()->is('kualitas*') ? 'border-b-blue-950' : 'border-transparent hover:border-b-blue-950' }}">Kualitas</a>
                     <a href="/hubungi-kami"
-                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 border-transparent hover:border-b-blue-950 whitespace-nowrap">Hubungi
+                        class="font-medium text-blue-950 transition-colors pb-1 border-b-2 whitespace-nowrap {{ request()->is('hubungi-kami*') ? 'border-b-blue-950' : 'border-transparent hover:border-b-blue-950' }}">Hubungi
                         Kami</a>
                 </div>
 
@@ -53,12 +53,12 @@
             <div
                 class="absolute flex flex-col bg-white shadow-md inset-x-0 mx-auto px-6 py-5 top-15 border-t border-gray-100">
                 <a href="/cerita-merk"
-                    class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Brand
-                    Story</a>
+                    class="font-medium transition-colors pb-2 border-b-2 border-transparent {{ request()->is('cerita-merk*') ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700' }}">Cerita
+                    Merk</a>
                 <a href="/produk"
-                    class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Produk</a>
+                    class="font-medium transition-colors pb-2 border-b-2 border-transparent {{ request()->is('produk*') ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700' }}">Produk</a>
                 <a href="/kualitas"
-                    class="font-medium text-gray-600 transition-colors pb-2 border-b-2 border-transparent hover:text-blue-700">Kualitas</a>
+                    class="font-medium transition-colors pb-2 border-b-2 border-transparent {{ request()->is('kualitas*') ? 'text-blue-700' : 'text-gray-600 hover:text-blue-700' }}">Kualitas</a>
                 <a href="/hubungi-kami"
                     class="font-semibold bg-blue-500 rounded-xl text-center py-2 text-white mt-5 hover:bg-blue-700">Hubungi
                     Kami</a>
