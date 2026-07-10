@@ -7,7 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('/cerita-merk', function () {
-    return view('brand-story');
+    $brandStory = \App\Models\BrandStory::first() ?? new \App\Models\BrandStory();
+    return view('brand-story', compact('brandStory'));
 });
 
 Route::get('/produk', function () {
