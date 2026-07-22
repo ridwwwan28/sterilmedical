@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
     'timeline_title',
     'timeline_subtitle',
     'timeline_items',
+    'product_cities',
 ])]
 class BrandStory extends Model
 {
@@ -29,6 +30,7 @@ class BrandStory extends Model
     {
         return [
             'timeline_items' => 'array',
+            'product_cities' => 'array',
         ];
     }
 }

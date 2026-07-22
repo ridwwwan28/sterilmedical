@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Muhammad Ridwan',
+            'email' => 'ridwan@danpacpharma.com',
+            'password' => bcrypt('ridwan1234'),
+            'role' => 'superadmin'
         ]);
 
         \App\Models\BrandStory::create([
@@ -58,7 +60,105 @@ class DatabaseSeeder extends Seeder
                     'year' => '2025',
                     'description' => 'Penggabungan PT. STERIL MEDICAL INDONESIA dengan PT. DANPAC PHARMA'
                 ]
+            ],
+            'product_cities' => [
+                [
+                    'city' => 'Jakarta',
+                    'latitude' => '-6.2088',
+                    'longitude' => '106.8456',
+                ],
+                [
+                    'city' => 'Surabaya',
+                    'latitude' => '-7.2504',
+                    'longitude' => '112.7688',
+                ],
+                [
+                    'city' => 'Bandung',
+                    'latitude' => '-6.9175',
+                    'longitude' => '107.6191',
+                ],
             ]
+        ]);
+
+        \App\Models\Quality::create([
+            'header_title' => 'Lorem ipsum.',
+            'header_subtitle' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+            'header_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sed minus cupiditate ipsa ullam nostrum inventore rerum laborum incidunt! Suscipit iure quia fugiat quas vero!',
+            'certificate_image' => null,
+            'achievements' => [
+                ['value' => '1998', 'label' => 'Berdiri sejak tahun'],
+                ['value' => '10', 'label' => 'Kota Penyebaran'],
+                ['value' => '100%', 'label' => 'Kepuasan Pelanggan']
+            ],
+            'info_title' => 'Perlengkapan Medis untuk Seluruh Komunitas',
+            'info_description' => 'Steril Medical memasok perlengkapan medis ke rumah sakit, laboratorium, klinik, layanan perawatan dirumah, tenaga medis, instansi pemerintah, dan lembaga medis',
+            'info_images' => null,
+            'trusted_title' => 'Dipercaya Oleh Para Pemimpin Industri',
+            'trusted_logos' => [
+                ['image' => 'img/quality/Akurat.png', 'alt_text' => 'Akurat'],
+                ['image' => 'img/quality/Arjoena.png', 'alt_text' => 'Parkway'],
+                ['image' => 'img/quality/Logo-01.png', 'alt_text' => 'Alexandra'],
+                ['image' => 'img/quality/Logo-02.png', 'alt_text' => 'A*STAR'],
+                ['image' => 'img/quality/logo-Onestep2.png', 'alt_text' => 'KK Hospital'],
+            ]
+        ]);
+
+        \App\Models\ProductPageSetting::create([
+            'header_title' => 'Lorem ipsum dolor sit amet.',
+            'header_description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum ut, fuga aliquid optio voluptate iste aliquam? Explicabo dolorem modi placeat!'
+        ]);
+
+        $groupMedis = \App\Models\ProductGroup::create([
+            'name' => 'Alat & Perlengkapan Medis',
+            'slug' => 'alat-perlengkapan-medis',
+        ]);
+
+        $groupSpesialis = \App\Models\ProductGroup::create([
+            'name' => 'Layanan & Perawatan Spesialis',
+            'slug' => 'layanan-perawatan-spesialis',
+        ]);
+
+        $categoriesMap = [
+            'UMUM' => \App\Models\ProductCategory::create(['product_group_id' => $groupMedis->id, 'name' => 'UMUM', 'slug' => 'umum']),
+            'OBGYN' => \App\Models\ProductCategory::create(['product_group_id' => $groupMedis->id, 'name' => 'OBGYN', 'slug' => 'obgyn']),
+            'DINKES PKM' => \App\Models\ProductCategory::create(['product_group_id' => $groupMedis->id, 'name' => 'DINKES PKM', 'slug' => 'dinkes-pkm']),
+            'HOMECARE' => \App\Models\ProductCategory::create(['product_group_id' => $groupSpesialis->id, 'name' => 'HOMECARE', 'slug' => 'homecare']),
+            'HEMODIALISA' => \App\Models\ProductCategory::create(['product_group_id' => $groupSpesialis->id, 'name' => 'HEMODIALISA', 'slug' => 'hemodialisa']),
+        ];
+
+        $products = config('products') ?? [];
+        foreach ($products as $index => $prod) {
+            $catName = strtoupper($prod['category'] ?? 'UMUM');
+            $categoryModel = $categoriesMap[$catName] ?? $categoriesMap['UMUM'];
+
+            // Tandai beberapa produk (misal produk pertama dan ketiga) sebagai produk unggulan
+            $isFeatured = in_array($prod['slug'], ['infusion-set', 'surgical-face-mask', 'sterile-urine-bag']);
+
+            \App\Models\Product::create([
+                'name' => $prod['name'],
+                'slug' => $prod['slug'],
+                'product_category_id' => $categoryModel->id,
+                'image' => $prod['image'],
+                'description' => $prod['description'],
+                'specifications' => $prod['specifications'] ?? [],
+                'is_featured' => $isFeatured,
+            ]);
+        }
+
+        \App\Models\HeroSlide::create([
+            'image' => 'img/hero/hero.jpg',
+            'is_active' => true,
+            'sort_order' => 1,
+        ]);
+
+        \App\Models\HeroSlide::create([
+            'image' => 'img/hero/hero.jpg',
+            'is_active' => true,
+            'sort_order' => 2,
+        ]);
+
+        \App\Models\HomeSetting::create([
+            'secondary_banner_image' => 'img/hero/hero.jpg',
         ]);
     }
 }

@@ -21,9 +21,10 @@
             </div>
 
             <div class="w-full flex flex-col lg:flex-row gap-4">
-                <div class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
-                    <img src="{{ $brandStory->vision_image ? asset('storage/' . $brandStory->vision_image) : asset('img/vision-mission/smi-negative.png') }}" alt="Steril Medical Indonesia Vision"
-                        class="w-60 max-h-36 object-contain mb-4">
+                <div
+                    class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
+                    <img src="{{ $brandStory->vision_image ? asset('storage/' . $brandStory->vision_image) : asset('img/vision-mission/smi-negative.png') }}"
+                        alt="Steril Medical Indonesia Vision" class="w-60 max-h-36 object-contain mb-4">
                     <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-wider uppercase mb-4 leading-snug">
                         {{ $brandStory->vision_title ?? 'Brand Vision' }}
                     </h2>
@@ -32,9 +33,10 @@
                     </p>
                 </div>
 
-                <div class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
-                    <img src="{{ $brandStory->mission_image ? asset('storage/' . $brandStory->mission_image) : asset('img/vision-mission/smi-negative.png') }}" alt="Steril Medical Indonesia Mission"
-                        class="w-60 max-h-36 object-contain mb-4">
+                <div
+                    class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
+                    <img src="{{ $brandStory->mission_image ? asset('storage/' . $brandStory->mission_image) : asset('img/vision-mission/smi-negative.png') }}"
+                        alt="Steril Medical Indonesia Mission" class="w-60 max-h-36 object-contain mb-4">
                     <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-wider uppercase mb-4 leading-snug">
                         {{ $brandStory->mission_title ?? 'Brand Mission' }}
                     </h2>
@@ -64,16 +66,17 @@
                     <div class="w-full">
 
                         <div class="mt-8 flex flex-col">
-                            @if(!empty($brandStory->timeline_items) && is_array($brandStory->timeline_items))
-                                @foreach($brandStory->timeline_items as $index => $item)
+                            @if (!empty($brandStory->timeline_items) && is_array($brandStory->timeline_items))
+                                @foreach ($brandStory->timeline_items as $index => $item)
                                     <div class="relative pl-12 pb-10">
-                                        @if(!$loop->last)
+                                        @if (!$loop->last)
                                             <div class="absolute left-2.75 top-2 -bottom-2 w-0.5 bg-blue-900 z-0"></div>
                                         @endif
                                         <div
                                             class="absolute left-0.5 top-1 w-5 h-5 rounded-full border-4 border-blue-900 bg-white z-10">
                                         </div>
-                                        <h4 class="font-bold text-gray-900 text-lg md:text-xl">{{ $item['year'] ?? '' }}</h4>
+                                        <h4 class="font-bold text-gray-900 text-lg md:text-xl">{{ $item['year'] ?? '' }}
+                                        </h4>
                                         <p class="text-sm md:text-base italic text-gray-700 mt-1">
                                             {{ $item['description'] ?? '' }}
                                         </p>
@@ -116,17 +119,18 @@
                     <div id="timelineContainer"
                         class="flex flex-row overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 pt-4 scroll-smooth">
 
-                        @if(!empty($brandStory->timeline_items) && is_array($brandStory->timeline_items))
-                            @foreach($brandStory->timeline_items as $index => $item)
+                        @if (!empty($brandStory->timeline_items) && is_array($brandStory->timeline_items))
+                            @foreach ($brandStory->timeline_items as $index => $item)
                                 <div class="relative flex-none w-72 sm:w-80 px-4 snap-start pt-8">
-                                    @if(!$loop->last)
+                                    @if (!$loop->last)
                                         <div class="absolute top-2.25 left-1/2 w-full h-0.5 bg-blue-900 z-0"></div>
                                     @endif
                                     <div
                                         class="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border-4 border-blue-900 bg-white z-10">
                                     </div>
                                     <div class="text-center mt-6">
-                                        <h4 class="font-bold text-gray-900 text-lg md:text-xl mb-2">{{ $item['year'] ?? '' }}</h4>
+                                        <h4 class="font-bold text-gray-900 text-lg md:text-xl mb-2">
+                                            {{ $item['year'] ?? '' }}</h4>
                                         <p class="text-sm italic text-gray-700 leading-relaxed">
                                             {{ $item['description'] ?? '' }}
                                         </p>
@@ -149,5 +153,45 @@
                 </div>
             </div>
         </div>
+
+        <!-- Map Section -->
+        <div class="max-w-6xl py-20 mx-auto px-4 sm:px-6 lg:px-8 transform-gpux">
+            <div class="mb-10 text-center">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4 tracking-wide">
+                    Persebaran Produk Kami
+                </h2>
+                <p class="text-gray-800 font-semibold text-base">
+                    Tersedia di berbagai kota besar di seluruh Indonesia
+                </p>
+            </div>
+
+            <div id="map" class="w-full h-[500px] rounded-3xl shadow-lg border border-gray-200 z-0"></div>
+        </div>
     </section>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inisialisasi Peta (Center default ke tengah Indonesia)
+            var map = L.map('map').setView([-2.5489, 118.0148], 5);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Ambil data kota dari PHP
+            var productCities = @json($brandStory->product_cities ?? []);
+
+            if (productCities && productCities.length > 0) {
+                productCities.forEach(function(item) {
+                    if (item.latitude && item.longitude && item.city) {
+                        var marker = L.marker([parseFloat(item.latitude), parseFloat(item.longitude)])
+                            .addTo(map);
+                        marker.bindPopup(`<b>Produk Tersedia di:</b><br>${item.city}`);
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

@@ -4,9 +4,9 @@ namespace App\Filament\Resources\BrandStory\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class BrandStoryForm
@@ -79,7 +79,7 @@ class BrandStoryForm
                                     ->label('Tahun')
                                     ->required(),
                                 Textarea::make('description')
-                                    ->label('Deskripsi Kejadian')
+                                    ->label('Deskripsi')
                                     ->rows(2)
                                     ->required(),
                             ])
@@ -88,6 +88,34 @@ class BrandStoryForm
                             ->reorderable()
                             ->collapsible()
                             ->addActionLabel('Tambah Tahun'),
+                    ]),
+
+                Section::make('Persebaran Produk')
+                    ->description('Kelola daftar kota beserta titik koordinatnya')
+                    ->schema([
+                        Repeater::make('product_cities')
+                            ->label('Daftar Kota')
+                            ->schema([
+                                TextInput::make('city')
+                                    ->label('Nama Kota')
+                                    ->placeholder('Contoh: Jakarta')
+                                    ->required(),
+                                TextInput::make('latitude')
+                                    ->label('Latitude (Garis Lintang)')
+                                    ->numeric()
+                                    ->placeholder('Contoh: -6.2088')
+                                    ->required(),
+                                TextInput::make('longitude')
+                                    ->label('Longitude (Garis Bujur)')
+                                    ->numeric()
+                                    ->placeholder('Contoh: 106.8456')
+                                    ->required(),
+                            ])
+                            ->columns(3)
+                            ->defaultItems(0)
+                            ->reorderable()
+                            ->collapsible()
+                            ->addActionLabel('Tambah Kota'),
                     ]),
             ]);
     }
