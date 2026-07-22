@@ -62,7 +62,7 @@
 
                             <!-- Description -->
                             <div class="mb-8">
-                                <h3 class="text-lg font-bold text-blue-950 mb-3">Deskripsi Produk</h3>
+                                <h2 class="text-lg font-bold text-blue-950 mb-3">Deskripsi Produk</h2>
                                 <p class="text-gray-600 leading-relaxed text-base">
                                     {{ $product->description }}
                                 </p>
@@ -70,7 +70,7 @@
 
                             <!-- Specifications -->
                             <div class="mb-8">
-                                <h3 class="text-lg font-bold text-blue-950 mb-4">Spesifikasi Teknis</h3>
+                                <h2 class="text-lg font-bold text-blue-950 mb-4">Spesifikasi Teknis</h2>
                                 @if(!empty($product->specifications) && is_array($product->specifications))
                                     <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-xs">
                                         <table class="w-full text-left border-collapse text-sm">
@@ -135,35 +135,7 @@
                     <h2 class="text-2xl font-extrabold text-blue-950 mb-6">Produk Terkait</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         @foreach ($relatedProducts as $rel)
-                            <a href="{{ route('products.detail', $rel->slug) }}"
-                                class="flex flex-col bg-white rounded-3xl p-5 border border-gray-100 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group">
-                                <div
-                                    class="w-full aspect-square overflow-hidden rounded-xl bg-gray-50 flex items-center justify-center mb-4">
-                                    @php
-                                        $relImg = $rel->image;
-                                        if (\Illuminate\Support\Str::startsWith($relImg, ['http://', 'https://'])) {
-                                            $relImgUrl = $relImg;
-                                        } elseif ($relImg && \Illuminate\Support\Facades\Storage::disk('public')->exists($relImg)) {
-                                            $relImgUrl = asset('storage/' . $relImg);
-                                        } else {
-                                            $relImgUrl = asset($relImg ?? 'img/products/produk_1.jpg');
-                                        }
-                                    @endphp
-                                    <img src="{{ $relImgUrl }}" alt="{{ $rel->name }}"
-                                        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                                <span
-                                    class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full self-start mb-2">
-                                    {{ $rel->category->name ?? '' }}
-                                </span>
-                                <h3
-                                    class="font-extrabold text-blue-950 group-hover:text-blue-700 transition-colors duration-200 line-clamp-1">
-                                    {{ $rel->name }}
-                                </h3>
-                                <p class="text-xs text-gray-500 line-clamp-2 mt-1 leading-relaxed">
-                                    {{ $rel->description }}
-                                </p>
-                            </a>
+                            <x-product-card :product="$rel" cardClass="flex flex-col bg-white rounded-3xl p-5 border border-gray-100 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group" />
                         @endforeach
                     </div>
                 </div>

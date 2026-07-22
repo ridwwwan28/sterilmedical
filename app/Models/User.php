@@ -36,6 +36,6 @@ class User extends Authenticatable implements FilamentUser
     #[Override]
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return (bool) ($this->is_active && in_array($this->role, ['admin', 'superadmin']));
     }
 }

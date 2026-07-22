@@ -5,10 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Dynamic Primary Meta Tags -->
+    @php
+        $defaultTitle = $websiteSettings?->meta_title ?? 'STERIL MEDICAL';
+        $currentTitle = $pageTitle ?? $defaultTitle;
+        $defaultDesc = 'Steril Medical menyediakan berbagai produk medis steril habis pakai berkualitas tinggi untuk rumah sakit, klinik, dan tenaga kesehatan.';
+        $currentDesc = $metaDescription ?? $defaultDesc;
+        $currentOgImage = $ogImage ?? asset('img/hero/hero.jpg');
+        $currentUrl = url()->current();
+    @endphp
+
+    <title>{{ $currentTitle }}</title>
+    <meta name="description" content="{{ $currentDesc }}">
+    <link rel="canonical" href="{{ $currentUrl }}">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $currentUrl }}">
+    <meta property="og:title" content="{{ $currentTitle }}">
+    <meta property="og:description" content="{{ $currentDesc }}">
+    <meta property="og:image" content="{{ $currentOgImage }}">
+    <meta property="og:site_name" content="Steril Medical">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ $currentUrl }}">
+    <meta name="twitter:title" content="{{ $currentTitle }}">
+    <meta name="twitter:description" content="{{ $currentDesc }}">
+    <meta name="twitter:image" content="{{ $currentOgImage }}">
+
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>{{ $websiteSettings?->meta_title ?? 'STERIL MEDICAL INDONESIA' }}</title>
 </head>
 
 <body class="scroll-smooth">

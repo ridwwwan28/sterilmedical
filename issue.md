@@ -1,154 +1,45 @@
-# Task: Pembuatan Halaman Home (index.blade.php) & Manajemen via Filament Admin
+# Fitur Lupa Password & Ganti Password via Email
 
-Dokumen ini berisi instruksi detail untuk membangun halaman Home (Beranda) dan memastikan kontennya dapat dikelola secara dinamis melalui Filament Admin Panel.
+## Deskripsi Tugas
+Saat ini sistem login admin (Filament Admin Panel) belum memiliki fitur "Lupa Password". Kita perlu menambahkan fitur ini agar pengguna dapat melakukan reset dan mengganti password mereka melalui tautan (link) yang dikirimkan ke email terdaftar.
 
-## 1. Persiapan Database & Model
+## Langkah-langkah Implementasi (Detail untuk Junior Programmer / AI Agent)
 
-Kita membutuhkan tabel untuk menyimpan data **Hero Slider** dan pengaturan **Secondary Banner**. 
-Karena **Produk Unggulan** sudah ditambahkan sebelumnya (melalui field `is_featured` di tabel `products`), kita tidak perlu membuat tabel produk unggulan baru.
+1. **Aktifkan Fitur Password Reset di Filament Panel**
+   - Buka file `app/Providers/Filament/AdminPanelProvider.php`.
+   - Pada method `panel(Panel $panel)`, cari konfigurasi panel (di bagian *chaining method* `$panel->...`).
+   - Tambahkan method `->passwordReset()` tepat di bawah `->login()`. Ini akan membuat Filament secara otomatis menambahkan halaman/rute Lupa Password dan menampilkan tautan "Forgot password?" di form login.
 
-### 1.1 Membuat Model & Migration untuk Hero Slider
-Jalankan perintah berikut untuk membuat model beserta migration:
-```bash
-php artisan make:model HeroSlide -m
-```
+2. **Periksa Konfigurasi Email di `.env`**
+   - Buka file `.env` di *root* proyek.
+   - Agar email bisa dikirim (atau disimulasikan), pastikan bagian konfigurasi email (`MAIL_...`) sudah benar.
+   - Untuk tahap *development* (uji coba lokal), Anda bisa menggunakan `log` agar isi email masuk ke file log, atau menggunakan Mailtrap.
+     ```env
+     MAIL_MAILER=log
+     # Jika menggunakan SMTP/Mailtrap, isi kredensial di bawah ini:
+     MAIL_HOST=127.0.0.1
+     MAIL_PORT=2525
+     MAIL_USERNAME=null
+     MAIL_PASSWORD=null
+     MAIL_FROM_ADDRESS="admin@sterilmedical.com"
+     MAIL_FROM_NAME="${APP_NAME}"
+     ```
+   - *Catatan: Jika memakai `MAIL_MAILER=log`, Anda bisa melihat tautan reset password yang dikirim di dalam file `storage/logs/laravel.log`.*
 
-Tambahkan struktur tabel di file migration `xxxx_xx_xx_xxxxxx_create_hero_slides_table.php`:
-```php
-public function up()
-{
-    Schema::create('hero_slides', function (Blueprint $table) {
-        $table->id();
-        $table->string('image');
-        $table->string('title')->nullable();
-        $table->text('description')->nullable();
-        $table->boolean('is_active')->default(true);
-        $table->integer('sort_order')->default(0);
-        $table->timestamps();
-    });
-}
-```
+3. **Verifikasi Database dan Model User**
+   - Pastikan model `app/Models/User.php` sudah memiliki *trait* `Illuminate\Notifications\Notifiable`. (Biasanya bawaan Laravel sudah ada).
+   - Pastikan migrasi default Laravel `0001_01_01_000000_create_users_table.php` sudah membuat tabel `password_reset_tokens`. (Laravel versi terbaru otomatis melakukan ini, cukup pastikan saja).
 
-Pada `app/Models/HeroSlide.php`, tambahkan `$fillable`:
-```php
-namespace App\Models;
+4. **Testing (Pengecekan)**
+   - Akses halaman login admin (`/admin/login`).
+   - Cek apakah tulisan/tautan untuk Lupa Password sudah muncul.
+   - Klik tautan tersebut, masukkan email admin yang sudah ada di database, lalu tekan tombol untuk mengirim email reset.
+   - Jika sukses, buka file `storage/logs/laravel.log` (jika menggunakan mailer `log`) dan cari link reset password-nya.
+   - Buka link tersebut, masukkan password baru, dan pastikan admin bisa login kembali menggunakan password baru tersebut.
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+## Aspek Keamanan & Clean Code
+- **Keamanan:** Proses enkripsi password biarkan dikelola oleh sistem bawaan Laravel dan Filament. Laravel sudah memastikan bahwa token reset hanya valid dalam batas waktu tertentu (default 60 menit) dan akan hangus apabila sudah dipakai atau kadaluarsa.
+- **Keamanan Konfigurasi:** Pastikan tidak melakukan *hardcode* email dan kredensial SMTP di dalam kode PHP. Selalu gunakan file `.env` dan panggil via `env()` (atau idealnya `config()`).
+- **Clean Code:** Memanfaatkan fitur bawaan Filament (`->passwordReset()`) jauh lebih bersih (clean) daripada membuat *controller* dan *view* manual yang *redundant* untuk halaman admin.
 
-class HeroSlide extends Model
-{
-    use HasFactory;
-    
-    protected $fillable = [
-        'image', 'title', 'description', 'is_active', 'sort_order'
-    ];
-}
-```
-
-### 1.2 Membuat Model & Migration untuk Pengaturan Halaman Utama (Secondary Banner)
-Jalankan:
-```bash
-php artisan make:model HomeSetting -m
-```
-
-Tambahkan struktur tabel di file migration `xxxx_xx_xx_xxxxxx_create_home_settings_table.php`:
-```php
-public function up()
-{
-    Schema::create('home_settings', function (Blueprint $table) {
-        $table->id();
-        $table->string('secondary_banner_image')->nullable();
-        $table->timestamps();
-    });
-}
-```
-
-Pada `app/Models/HomeSetting.php`:
-```php
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class HomeSetting extends Model
-{
-    use HasFactory;
-
-    protected $fillable = ['secondary_banner_image'];
-}
-```
-
-*Catatan:* Jalankan `php artisan migrate` setelah modifikasi file migration selesai dilakukan.
-
-## 2. Pembuatan Filament Resource & Page
-
-### 2.1 Resource Hero Slide
-Jalankan perintah:
-```bash
-php artisan make:filament-resource HeroSlide
-```
-
-Ubah `app/Filament/Resources/HeroSlideResource.php`:
-- **Form Schema:**
-  Gunakan komponen `FileUpload` untuk gambar (image) dengan direktori tujuan penyimpanan misal `'hero-slides'`, `TextInput` untuk title, `Textarea` untuk description, `Toggle` untuk is_active (default state `true`), dan `TextInput` (numeric) untuk sort_order.
-- **Table Schema:**
-  Gunakan `ImageColumn` untuk preview gambar, `TextColumn` untuk title, `IconColumn` (boolean) untuk is_active, dan tambahkan fitur pengurutan (sortable) pada `sort_order`.
-
-### 2.2 Pengaturan Secondary Banner
-Kita bisa menggunakan resource khusus di Filament untuk mengelola satu baris data `HomeSetting`.
-Buat Resource:
-```bash
-php artisan make:filament-resource HomeSetting
-```
-- **Form Schema:** `FileUpload` untuk `secondary_banner_image`.
-- Pastikan logika controller atau pengaturan hanya mengizinkan pengubahan baris data pertama, agar Secondary Banner tetap konsisten. Sebagai alternatif, kamu bisa mematikan opsi Create di Table jika datanya sudah ada 1.
-
-## 3. Implementasi Halaman Frontend (`resources/views/index.blade.php`)
-
-Buat route utama di `routes/web.php` untuk menampilkan halaman home:
-```php
-use App\Models\HeroSlide;
-use App\Models\HomeSetting;
-use App\Models\Product;
-
-Route::get('/', function () {
-    // Ambil data hero slide yang aktif diurutkan berdasarkan urutan
-    $heroSlides = HeroSlide::where('is_active', true)->orderBy('sort_order')->get();
-    
-    // Ambil baris pertama dari settings banner
-    $homeSetting = HomeSetting::first();
-    
-    // Ambil maksimal 4 produk yang ditandai unggulan
-    $featuredProducts = Product::where('is_featured', true)->take(4)->get();
-    
-    return view('index', compact('heroSlides', 'homeSetting', 'featuredProducts'));
-})->name('home');
-```
-
-Modifikasi atau buat file tampilan di `resources/views/index.blade.php` (Catatan: jika nama filenya adalah `index.php`, disarankan menggunakan `index.blade.php` agar fitur Blade Laravel bisa digunakan):
-
-### 3.1 Hero Section (Slider)
-- Loop data `$heroSlides`.
-- Gambar harus menyesuaikan ukuran penuh layar (misal CSS menggunakan `w-full h-screen object-cover`).
-- Tambahkan library slider seperti **SwiperJS** atau menggunakan **Alpine.js** untuk mengatur logika perpindahan slide (berganti-ganti gambar otomatis/sliding).
-- Jika ada tulisan di slide, tampilkan teks `title` dan `description` melayang (overlay) di atas gambar dengan latar gelap/semi-transparan agar mudah dibaca.
-
-### 3.2 Secondary Banner Section
-- Cek apakah data `$homeSetting` dan atribut `secondary_banner_image` tidak kosong.
-- Tampilkan gambar tersebut secara utuh memenuhi lebar layar di bawah bagian Hero (misal class: `w-full h-auto`).
-
-### 3.3 Featured Products (Produk Unggulan) Section
-- Tampilkan judul seksi, contoh: "Produk Unggulan Kami".
-- Loop data `$featuredProducts`.
-- Tampilkan dalam bentuk **Grid**, misalnya menggunakan Tailwind CSS: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6`.
-- Struktur card/kotak produk harus serupa dengan yang sudah dibuat sebelumnya di halaman Katalog Produk, mencakup:
-  - Gambar Utama Produk
-  - Nama Produk
-  - Tombol atau tautan menuju detail produk
-
-## 4. Pengujian (Testing)
-- Pastikan slider berjalan secara responsif (berfungsi baik dari mobile dan desktop).
-- Pastikan secondary banner ter-load dengan benar jika di-set dari admin panel.
-- Periksa maksimal 4 produk unggulan benar-benar yang dimuat pada halaman beranda.
-- Uji input, edit, dan hapus melalui Filament Admin untuk Hero Slider agar memvalidasi gambar muncul dengan benar.
+Silakan jalankan langkah-langkah di atas dan pastikan tidak ada *bug* atau *error* saat proses reset password dilakukan.

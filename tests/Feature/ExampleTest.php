@@ -58,7 +58,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/produk');
 
         $response->assertStatus(200);
-        $response->assertSee('Lorem ipsum dolor sit amet.');
+        $response->assertSee('Produk Steril Medical');
     }
 
     public function test_product_detail_page_returns_successful_response(): void

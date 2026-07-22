@@ -12,9 +12,9 @@
         <div class="max-w-6xl mx-auto px-4 pt-2 flex flex-col gap-16 mt-15 lg:mt-23 lg:gap-12 transform-gpu">
 
             <div class="w-full p-10 mb-2 lg:mb-4">
-                <h3 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
-                    {{ $brandStory->header_title ?? 'Lorem ipsum dolor sit amet.' }}
-                </h3>
+                <h1 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
+                    {{ $brandStory->header_title ?? 'Cerita Merk Steril Medical' }}
+                </h1>
                 <p class="text-normal text-center text-blue-950 mx-auto max-w-4xl">
                     {{ $brandStory->header_description ?? 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum ut, fuga aliquid optio voluptate iste aliquam? Explicabo dolorem modi placeat!' }}
                 </p>

@@ -28,10 +28,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Sterilmedical Admin')
+            ->passwordReset()
+            ->brandName('Sterilmedical Web Admin Login')
             ->brandLogoHeight('2.25rem')
             ->colors([
-                'primary' => Color::Emerald,
+                'primary' => Color::Blue,
                 'info' => Color::Sky,
                 'success' => Color::Emerald,
                 'warning' => Color::Amber,

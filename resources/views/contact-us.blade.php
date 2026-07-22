@@ -10,12 +10,12 @@
 
         <div class="max-w-6xl mx-auto px-4 pt-2 sm:px-6 mt-15 lg:mt-23 lg:px-8 transform-gpu">
             <div class="w-full p-10 mb-2 lg:mb-4">
-                <h3 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">Lorem
-                    ipsum dolor sit amet.</h3>
-                <p class="text-normal text-center text-blue-950 mx-auto max-w-4xl">Lorem ipsum dolor sit amet consectetur,
-                    adipisicing elit.
-                    Cum ut, fuga aliquid optio voluptate iste
-                    aliquam? Explicabo dolorem modi placeat!</p>
+                <h1 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
+                    Hubungi Steril Medical Indonesia
+                </h1>
+                <p class="text-normal text-center text-blue-950 mx-auto max-w-4xl">
+                    Tim kami siap membantu Anda dengan informasi produk, konsultasi pemesanan, dan kemitraan layanan kesehatan.
+                </p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 w-full mb-20 items-center lg:items-start">
