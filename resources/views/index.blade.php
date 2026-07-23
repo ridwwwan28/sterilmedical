@@ -4,7 +4,7 @@
     <x-hero-slider :heroSlides="$heroSlides" />
 
     <!-- Secondary Banner Section -->
-    <section id="secondary-banner" class="w-full">
+    <section id="secondary-banner" class="w-full" data-aos="fade-up">
         @php
             $secImg = $homeSetting->secondary_banner_image ?? null;
             if ($secImg && \Illuminate\Support\Str::startsWith($secImg, ['http://', 'https://'])) {
@@ -22,7 +22,7 @@
     <section id="featured-products" class="w-full py-16 bg-linear-to-b from-blue-50 via-white to-blue-50/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header Section -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-blue-950 tracking-tight">
                     Produk Kami
                 </h2>
@@ -34,16 +34,18 @@
             <!-- Products Grid -->
             <div class="flex flex-wrap justify-center gap-6 mb-12">
                 @forelse($featuredProducts as $prod)
-                    <x-product-card :product="$prod" cardClass="product-item w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] relative flex flex-col bg-white rounded-3xl p-6 transition-all duration-300 border border-gray-100 shadow-xs hover:shadow-2xl hover:-translate-y-1 group" />
+                    <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)]">
+                        <x-product-card :product="$prod" cardClass="product-item w-full relative flex flex-col bg-white rounded-3xl p-6 transition-all duration-300 border border-gray-100 shadow-xs hover:shadow-2xl hover:-translate-y-1 group" />
+                    </div>
                 @empty
-                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-gray-100">
+                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-gray-100" data-aos="fade-up">
                         <p class="text-gray-500 text-base">Belum ada produk unggulan yang dipilih.</p>
                     </div>
                 @endforelse
             </div>
 
             <!-- View All Products CTA -->
-            <div class="text-center">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
                 <a href="{{ url('/produk') }}"
                     class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-base shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
                     <span>Lihat Semua Produk</span>

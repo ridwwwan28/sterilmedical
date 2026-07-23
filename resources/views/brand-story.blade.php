@@ -11,7 +11,7 @@
 
         <div class="max-w-6xl mx-auto px-4 pt-2 flex flex-col gap-16 mt-15 lg:mt-23 lg:gap-12 transform-gpu">
 
-            <div class="w-full p-10 mb-2 lg:mb-4">
+            <div class="w-full p-10 mb-2 lg:mb-4" data-aos="fade-up">
                 <h1 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
                     {{ $brandStory->header_title ?? 'Cerita Merk Steril Medical' }}
                 </h1>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="w-full flex flex-col lg:flex-row gap-4">
-                <div
+                <div data-aos="fade-right"
                     class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
                     <img src="{{ $brandStory->vision_image ? asset('storage/' . $brandStory->vision_image) : asset('img/vision-mission/smi-negative.png') }}"
                         alt="Steril Medical Indonesia Vision" class="w-60 max-h-36 object-contain mb-4">
@@ -33,7 +33,7 @@
                     </p>
                 </div>
 
-                <div
+                <div data-aos="fade-left"
                     class="bg-blue-950 text-white rounded-3xl px-6 py-10 flex flex-col items-center text-center w-full lg:w-1/2">
                     <img src="{{ $brandStory->mission_image ? asset('storage/' . $brandStory->mission_image) : asset('img/vision-mission/smi-negative.png') }}"
                         alt="Steril Medical Indonesia Mission" class="w-60 max-h-36 object-contain mb-4">
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Brand Story Mobile-->
-        <div class="lg:hidden w-full py-20 overflow-hidden">
+        <div class="lg:hidden w-full py-20 overflow-hidden" data-aos="fade-up">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div class="mb-10 text-center">
@@ -91,7 +91,7 @@
         </div>
 
         <!-- Brand Story PC -->
-        <div class="hidden lg:flex w-full py-20 overflow-hidden">
+        <div class="hidden lg:flex w-full py-20 overflow-hidden" data-aos="fade-up">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div class="flex flex-col md:flex-row items-center justify-center mb-16">
@@ -155,7 +155,7 @@
         </div>
 
         <!-- Map Section -->
-        <div class="max-w-6xl py-20 mx-auto px-4 sm:px-6 lg:px-8 transform-gpux">
+        <div class="max-w-6xl py-20 mx-auto px-4 sm:px-6 lg:px-8 transform-gpux" data-aos="zoom-in">
             <div class="mb-10 text-center">
                 <h2 class="text-4xl font-bold text-blue-900 mb-4 tracking-wide">
                     Persebaran Produk Kami

@@ -9,7 +9,7 @@
         </div>
 
         <div class="max-w-6xl mx-auto px-4 pt-2 sm:px-6 mt-15 lg:mt-23 lg:px-8 transform-gpu">
-            <div class="w-full p-10 mb-2 lg:mb-4">
+            <div class="w-full p-10 mb-2 lg:mb-4" data-aos="fade-up">
                 <h1 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
                     Hubungi Steril Medical Indonesia
                 </h1>
@@ -19,7 +19,7 @@
             </div>
 
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 w-full mb-20 items-center lg:items-start">
-                <div class="w-full px-2">
+                <div class="w-full px-2" data-aos="fade-right">
                     <h3 class="text-2xl font-semibold uppercase text-center mb-5 text-blue-950">Kantor Pusat</h3>
                     <div class="flex gap-2 text-blue-950 mb-4">
                         <div class="flex items-center justify-center">
@@ -86,7 +86,7 @@
                         <div>08.30 - 17.30</div>
                     </div>
                 </div>
-                <div class="w-full mx-auto">
+                <div class="w-full mx-auto" data-aos="fade-left">
                     @if (!empty($websiteSettings?->google_map_embed))
                         <iframe src="{{ $websiteSettings->google_map_embed }}" style="border:0;" allowfullscreen=""
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"

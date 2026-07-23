@@ -9,7 +9,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12">
 
                     <!-- Left: Product Image -->
-                    <div class="flex flex-col space-y-4">
+                    <div class="flex flex-col space-y-4" data-aos="zoom-in">
                         <div
                             class="relative w-full aspect-square bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-center overflow-hidden group">
                             @php
@@ -34,7 +34,7 @@
                     </div>
 
                     <!-- Right: Product Information -->
-                    <div class="flex flex-col justify-between">
+                    <div class="flex flex-col justify-between" data-aos="fade-left" data-aos-delay="100">
                         <div>
                             <div class="flex items-center gap-2 mb-2 flex-wrap">
                                 @if($product->is_featured)
@@ -97,25 +97,10 @@
                         </div>
 
                         <!-- CTA Actions -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-6 pt-6 border-t border-gray-100">
-                            <!-- WhatsApp CTA -->
-                            <a href="https://wa.me/6281286933933?text=Halo%20Steril%20Medical%20Indonesia,%20saya%20tertarik%20dengan%20produk%20*{{ urlencode($product->name) }}*.%20Bisa%20berikan%20informasi%20lebih%20lanjut%20atau%20katalognya?"
-                                target="_blank"
-                                class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold rounded-2xl shadow-lg hover:shadow-emerald-600/20 hover:-translate-y-0.5 transition-all duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-phone-call">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81 7A2 2 0 0 1 22 16.92z" />
-                                    <path d="M14.05 2a9 9 0 0 1 8 7.94" />
-                                    <path d="M14.05 6A5 5 0 0 1 18 10" />
-                                </svg>
-                                Tanya Via WhatsApp
-                            </a>
-
+                        <div class="flex justify-end mt-6 pt-6 border-t border-gray-100">
                             <!-- Back to Products -->
                             <a href="/produk"
-                                class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-gray-50 active:bg-gray-100 text-blue-950 font-bold rounded-2xl border border-gray-200 transition-colors duration-200">
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-gray-50 active:bg-gray-100 text-blue-950 font-bold rounded-2xl border border-gray-200 transition-colors duration-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                     stroke-linejoin="round" class="lucide lucide-arrow-left">
@@ -131,11 +116,13 @@
 
             <!-- Related Products Section -->
             @if(isset($relatedProducts) && $relatedProducts->count() > 0)
-                <div class="mt-16">
+                <div class="mt-16" data-aos="fade-up">
                     <h2 class="text-2xl font-extrabold text-blue-950 mb-6">Produk Terkait</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         @foreach ($relatedProducts as $rel)
-                            <x-product-card :product="$rel" cardClass="flex flex-col bg-white rounded-3xl p-5 border border-gray-100 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group" />
+                            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
+                                <x-product-card :product="$rel" cardClass="flex flex-col bg-white rounded-3xl p-5 border border-gray-100 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group" />
+                            </div>
                         @endforeach
                     </div>
                 </div>

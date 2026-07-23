@@ -11,7 +11,7 @@
             class="absolute bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 rounded-full bg-sky-100/50 blur-3xl pointer-events-none">
         </div>
 
-        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center" data-aos="fade-up">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-950 leading-tight tracking-tight mb-6 max-w-4xl mx-auto">
                 {{ $quality->header_title ?? 'Lorem ipsum.' }} <br class="hidden md:inline">
                 <span class="text-blue-950 bg-clip-text">{{ $quality->header_subtitle ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.' }}</span>
@@ -21,7 +21,7 @@
             </p>
         </div>
 
-        <div class="max-w-6xl mx-auto px-2 py-2 flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-2 py-2 flex justify-center items-center" data-aos="zoom-in" data-aos-delay="100">
             <div
                 class="w-full max-w-xs md:max-w-2xl lg:max-w-4xl rounded-2xl shadow-xl border border-slate-100 transition-transform transform-gpu duration-300 hover:scale-105">
                 <img src="{{ $quality->certificate_image ? asset('storage/' . $quality->certificate_image) : asset('img/quality/piagam.jpeg') }}" alt="Piagam Steril Medical"
@@ -31,7 +31,7 @@
 
         <!-- Achievements / Statistik Pencapaian -->
         @if(!empty($quality->achievements) && is_array($quality->achievements))
-            <div class="max-w-6xl mx-auto px-4 mt-16 relative z-10">
+            <div class="max-w-6xl mx-auto px-4 mt-16 relative z-10" data-aos="fade-up">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 px-6 bg-linear-to-r from-blue-50 to-sky-50/50 rounded-3xl border border-blue-100/50 shadow-md">
                     @foreach($quality->achievements as $stat)
                         <div class="text-center flex flex-col justify-center items-center p-4">
@@ -47,7 +47,7 @@
             </div>
         @endif
 
-        <div class="w-full p-10 bg-blue-950 mt-15 lg:mt-20 transform-gpu">
+        <div class="w-full p-10 bg-blue-950 mt-15 lg:mt-20 transform-gpu" data-aos="fade-up">
             <div class="max-w-6xl w-full mx-auto transform-gpu">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
                     <div class="w-full p-4 flex flex-col justify-center">

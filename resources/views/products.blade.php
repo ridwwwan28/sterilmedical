@@ -10,7 +10,7 @@
 
         <div class="max-w-6xl mx-auto px-4 pt-2 sm:px-6 mt-15 lg:mt-23 lg:px-8 transform-gpu">
 
-            <div class="w-full p-10 mb-2 lg:mb-4">
+            <div class="w-full p-10 mb-2 lg:mb-4" data-aos="fade-up">
                 <h1 class="text-4xl lg:text-5xl font-bold text-center text-blue-950 leading-tight tracking-tight mb-2">
                     {{ $setting->header_title ?? 'Katalog Produk Steril Medical' }}
                 </h1>
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Form Search & Filter Bertingkat -->
-            <form id="filterForm" method="GET" action="{{ url('/produk') }}"
+            <form id="filterForm" method="GET" action="{{ url('/produk') }}" data-aos="fade-up" data-aos-delay="100"
                 class="mb-8 grid grid-cols-1 {{ count($availableCategories) > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2' }} gap-4 px-4">
                 <!-- Search Input -->
                 <div class="relative w-full">
@@ -85,9 +85,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 @forelse ($products as $prod)
-                    <x-product-card :product="$prod" cardClass="product-item relative flex flex-col bg-white rounded-3xl p-6 transition-all duration-300 border border-gray-100 shadow-xs hover:shadow-2xl hover:-translate-y-1 group" />
+                    <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
+                        <x-product-card :product="$prod" cardClass="product-item relative flex flex-col bg-white rounded-3xl p-6 transition-all duration-300 border border-gray-100 shadow-xs hover:shadow-2xl hover:-translate-y-1 group" />
+                    </div>
                 @empty
-                    <div class="col-span-full text-center py-12">
+                    <div class="col-span-full text-center py-12" data-aos="fade-up">
                         <p class="text-gray-500 text-lg">Tidak ada produk ditemukan.</p>
                     </div>
                 @endforelse
